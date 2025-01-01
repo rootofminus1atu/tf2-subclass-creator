@@ -1,0 +1,7 @@
+<h1 class="text-center orange-shift-12 hero-text">EDIT A LOADOUT</h1>
+@if (loadout$ | async; as loadout) {
+    <app-creator [initialLoadout]="loadout" (formSubmit)="sendLoadout($event)"></app-creator>
+} @else {
+    <app-creator (formSubmit)="sendLoadout($event)"></app-creator>
+}
+

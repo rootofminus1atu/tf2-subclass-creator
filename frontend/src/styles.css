@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'TF2Primary';  /* for most titles, buttons, etc. */
+    src: url('../public/assets/fonts/tf2build.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TF2Secondary';  /* for long text like paragraphs */
+    src: url('../public/assets/fonts/TF2secondary.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TF2Hero';  /* for main title */
+    src: url('../public/assets/fonts/compctan-compacta.ttf') format('truetype');
+}
+
+:root {
+    --tf2-brown0: rgb(41, 37, 38);
+    --tf2-brown1: rgb(43, 39, 36);
+    --tf2-brown2: rgb(54, 49, 45);
+    --tf2-brown29: rgb(78, 70, 61);
+    --tf2-brown3: rgb(87, 78, 67);
+    --tf2-yellow: rgb(247, 204, 37);
+    --tf2-beige: rgb(127, 117, 115);
+    --tf2-beige2: rgb(118, 107, 94);  /* for example for button bg */
+    --tf2-white: rgb(236, 227, 203);  /* for majority of text and icons */
+    --tf2-white-a: rgba(236, 227, 203, 0.5);
+    --tf2-redish: rgb(146, 71, 56);
+    --tf2-orange: rgb(178, 82, 22);
+    --tf2-error: rgb(177, 6, 6);
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'TF2Primary';
+    color: var(--tf2-white);
+    background-color: var(--tf2-brown1);
+}
+
+
+.mat-mdc-dialog-container-with-actions .mat-mdc-dialog-content {
+    padding: 0 !important;
+}
+
+.mat-mdc-option.mdc-list-item {
+    background: var(--tf2-brown29) !important;
+}
+div.mat-mdc-select-panel {
+    padding: 0 !important;
+}
+
+.mdc-snackbar button:hover {
+    border-radius: 0.25rem;
+}
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+    --mat-text-button-state-layer-color: var(--tf2-redish) !important;
+    --mat-text-button-ripple-color: var(--tf2-redish) !important;
+}
+
+
+
+/* custom universal style tings */
+
+.box {
+    padding: 1rem;
+    background-color: var(--tf2-brown2);
+    border-radius: 0.25rem;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.box h1,h2,h3 {
+    margin-top: 0.25rem;
+} 
+.box p {
+    margin-bottom: 0.25rem;
+}
+
+.text-secondary {
+    font-family: 'TF2Secondary';
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-w {
+    width: 100%;
+}
+  
+.max-w {
+    max-width: 1080px;
+    margin: 0 auto;
+} 
+
+.text-center {
+    text-align: center;
+}
+
+.text-dark {
+    color: var(--tf2-brown1);
+}
+
+.overlay {
+    display: inline-flex;
+}
+
+.orange-shift-6 {
+    text-shadow: 
+    -6px -6px 0 var(--tf2-orange),
+    -5px -5px 0 var(--tf2-orange),
+    -4px -4px 0 var(--tf2-orange),
+    -3px -3px 0 var(--tf2-orange),
+    -2px -2px 0 var(--tf2-orange),
+    -1px -1px 0 var(--tf2-orange),
+    1px 1px 0 var(--tf2-orange), 
+    2px 2px 0 var(--tf2-orange), 
+    3px 3px 0 var(--tf2-orange),
+    4px 4px 0 var(--tf2-orange),
+    5px 5px 0 var(--tf2-orange),
+    6px 6px 0 var(--tf2-orange);
+}
+
+.hero-text {
+    font-family: 'TF2Hero';
+    font-size: 5rem;
+}
+
+.orange-shift-12 {
+    text-shadow: 
+        -12px -12px 0 var(--tf2-orange),
+        -11px -11px 0 var(--tf2-orange),
+        -10px -10px 0 var(--tf2-orange),
+        -9px -9px 0 var(--tf2-orange),
+        -8px -8px 0 var(--tf2-orange),
+        -7px -7px 0 var(--tf2-orange),
+        -6px -6px 0 var(--tf2-orange),
+        -5px -5px 0 var(--tf2-orange),
+        -4px -4px 0 var(--tf2-orange),
+        -3px -3px 0 var(--tf2-orange),
+        -2px -2px 0 var(--tf2-orange),
+        -1px -1px 0 var(--tf2-orange),
+        1px 1px 0 var(--tf2-orange), 
+        2px 2px 0 var(--tf2-orange), 
+        3px 3px 0 var(--tf2-orange),
+        4px 4px 0 var(--tf2-orange),
+        5px 5px 0 var(--tf2-orange),
+        6px 6px 0 var(--tf2-orange),
+        7px 7px 0 var(--tf2-orange),
+        8px 8px 0 var(--tf2-orange),
+        9px 9px 0 var(--tf2-orange),
+        10px 10px 0 var(--tf2-orange),
+        11px 11px 0 var(--tf2-orange),
+        12px 12px 0 var(--tf2-orange);
+}

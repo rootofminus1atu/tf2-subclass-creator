@@ -1,0 +1,46 @@
+.the-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.slot-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .slot-select {
+        flex-direction: column;
+    }
+}
+
+.playstyle-form-field {
+    width: 100%;
+    max-width: 30rem;
+}
+
+.name-form-field {
+    width: 100%;
+    max-width: 22rem;
+}
+
+.merc-form-field {
+    width: 100%;
+    max-width: 22rem;
+}
+
+.hint {
+    color: var(--tf2-brown1);
+}
+
+.error {
+    /* font-weight: bold; */
+    color: var(--tf2-brown1);
+}
+

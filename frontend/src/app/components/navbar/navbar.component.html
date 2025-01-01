@@ -1,0 +1,17 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a routerLink="/" (click)="collapseNavbar()">Home</a>
+        <button class="navbar-toggler" (click)="toggleNavbar()">
+            &#9776;
+        </button>
+    </div>
+    <div class="navbar-menu" [class.active]="!isNavbarCollapsed">
+        <a class="navbar-item" routerLink="/gallery" routerLinkActive="active" (click)="toggleNavbar()">Gallery</a>
+        <a class="navbar-item" routerLink="/loadout-creator" routerLinkActive="active" (click)="toggleNavbar()">Loadout&nbsp;Creator</a>
+        <a class="navbar-item" routerLink="/about" routerLinkActive="active" (click)="toggleNavbar()">About</a>
+        <a class="navbar-item" (click)="collapseNavbar()">
+            <app-auth-button></app-auth-button>
+        </a>
+    </div>
+</nav>
+  

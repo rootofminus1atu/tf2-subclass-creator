@@ -1,0 +1,15 @@
+
+<div 
+    class="weapon-card" 
+    [ngStyle]="{
+        'background-image': weapon() ? 'url(' + weapon()?.image_url_large + ')' : 'none',
+        'width': baseWidth * (scale() ?? 1) + 'rem',
+        'height': baseHeight * (scale() ?? 1) + 'rem',
+    }"
+    [ngClass]="{
+        'active': active() ,
+        'editable': editable()
+    }"
+>
+    <div class="weapon-name">{{ weapon()?.name ?? fallbackText() ?? '' }}</div>
+</div>

@@ -1,0 +1,136 @@
+@endpoint = http://localhost:3000/api/v1/loadouts
+@invalidId = a712aecfc134e6e450eb9c73
+
+# below is a series of tests to test out all the loadout routes in tandom
+
+###
+# @name postALoadoutMissingSecondary
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "primary": 199,
+    "melee": 30758,
+    "name": "prinny engie",
+    "playstyle": "hit your enemies with the prinny machete"
+}
+
+###
+# @name postInvalidLoadoutBadMerc
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Merasmus",
+    "primary": 199,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "merasmus",
+    "playstyle": "hit your enemies with the prinny machete"
+}
+
+###
+# @name postALoadoutBadPrimaryWeapon
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "primary": 30758,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "prinny engie",
+    "playstyle": "hit your enemies with the prinny machete"
+}
+
+###
+# @name postALoadout
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "primary": 199,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "prinny engie",
+    "playstyle": "hit your enemies with the prinny machete"
+}
+
+###
+@loadoutId = {{postALoadout.response.body._id}}
+###
+
+# @name getALlLoadouts
+GET {{endpoint}} HTTP/1.1
+Content-Type: application/json
+###
+
+# @name getOneLoadout
+GET {{endpoint}}/{{loadoutId}} HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name getInvalidLoadout
+GET {{endpoint}}/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name updateALodoutFailIdNotFound
+PUT {{endpoint}}/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "name": "new valid name"
+}
+###
+
+# @name updateALodoutPartialFailInvalidMelee
+PUT {{endpoint}}/{{loadoutId}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "melee": 209
+}
+###
+
+# @name updateALoadoutPartialSuccessMelee
+PUT {{endpoint}}/{{loadoutId}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "melee": 30758
+}
+###
+
+# @name updateALodoutSuccessNameChange
+PUT {{endpoint}}/{{loadoutId}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Engineer",
+    "primary": 199,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "funny engie",
+    "playstyle": "updated hit your enemies with the prinny machete"
+}
+###
+
+# @name deleteALoadout
+DELETE {{endpoint}}/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name deleteALoadout
+DELETE {{endpoint}}/{{loadoutId}} HTTP/1.1
+Content-Type: application/json
+
+###

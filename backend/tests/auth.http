@@ -1,0 +1,65 @@
+@endpoint = http://localhost:3000
+@loadouts = api/v1/loadouts
+@yourLoadoutId = 67449a7c60e0731c4c1f7e93
+@somebodyElsesLoadoutId = 67449abf60e0731c4c1f7e94
+GET {{endpoint}}/ping HTTP/1.1
+Authorization: Bearer h
+
+
+###
+# @name postALoadout
+POST {{endpoint}}/{{loadouts}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer h
+
+{
+    "merc": "Engineer",
+    "primary": 199,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "WHATTT",
+    "playstyle": "hit your enemies with the prinny machete"
+}
+
+
+###
+# @name updateALodoutFail
+PUT {{endpoint}}/{{loadouts}}/{{somebodyElsesLoadoutId}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer h
+
+{
+    "merc": "Engineer",
+    "primary": 199,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "funny engie",
+    "playstyle": "updated hit your enemies with the prinny machete"
+}
+
+###
+# @name updateALodoutSuccess
+PUT {{endpoint}}/{{loadouts}}/{{somebodyElsesLoadoutId}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer h
+
+{
+    "merc": "Engineer",
+    "primary": 199,
+    "secondary": 209,
+    "melee": 30758,
+    "name": "super cool engie",
+    "playstyle": "updated hit your enemies with the prinny machete"
+}
+
+###
+# @name deleteALoadoutFail
+DELETE {{endpoint}}/{{loadouts}}/{{somebodyElsesLoadoutId}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer h
+
+###
+# @name deleteALoadoutSuccess
+DELETE {{endpoint}}/{{loadouts}}/{{yourLoadoutId}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer h

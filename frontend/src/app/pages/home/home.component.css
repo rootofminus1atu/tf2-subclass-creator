@@ -1,0 +1,13 @@
+.home-desc {
+    margin-bottom: 3.5rem;
+}
+
+button {
+    margin-top: 1rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: start;
+}

@@ -1,0 +1,42 @@
+.gallery-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 40rem;
+    margin: 0 auto;
+    gap: 6rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.space-for-card {
+    width: 100%;
+}
+
+.title {
+    margin-top: 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 0.75rem;
+}
+
+.gallery-desc {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.nltd {
+    margin: 0;
+    padding: 0;
+}
+
+.nltd-box {
+    gap: 2rem;
+    padding: 1rem;
+}

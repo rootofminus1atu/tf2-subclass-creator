@@ -1,0 +1,251 @@
+[
+    {
+        "name": "The Dead Ringer",
+        "defindex": 59,
+        "item_class": "tf_weapon_invis",
+        "item_type_name": "#TF_Weapon_Watch",
+        "item_name": "#TF_Unique_Achievement_FeignWatch",
+        "proper_name": true,
+        "item_slot": "pda2",
+        "model_player": "models/weapons/v_models/v_watch_pocket_spy.mdl",
+        "item_quality": 6,
+        "image_inventory": "backpack/weapons/c_models/c_pocket_watch/parts/c_pocket_watch",
+        "min_ilevel": 5,
+        "max_ilevel": 5,
+        "image_url": "http://media.steampowered.com/apps/440/icons/c_pocket_watch.4bb1428288c15c31b18e7ed73676049befb33770.png",
+        "image_url_large": "http://media.steampowered.com/apps/440/icons/c_pocket_watch_large.4152a0038c97f105b0d262234c6f7afada9f055a.png",
+        "craft_class": "weapon",
+        "craft_material_type": "weapon",
+        "capabilities": {
+            "nameable": true,
+            "can_gift_wrap": true,
+            "can_craft_mark": true,
+            "can_be_restored": true,
+            "strange_parts": true,
+            "can_card_upgrade": true,
+            "can_strangify": true,
+            "can_killstreakify": true,
+            "can_consume": true
+        },
+        "used_by_classes": [
+            "Spy"
+        ],
+        "attributes": [
+            {
+                "name": "set cloak is feign death",
+                "class": "set_weapon_mode",
+                "value": 1
+            },
+            {
+                "name": "cloak consume rate decreased",
+                "class": "mult_cloak_meter_consume_rate",
+                "value": 0.6000000238418579
+            },
+            {
+                "name": "cloak_consume_on_feign_death_activate",
+                "class": "cloak_consume_on_feign_death_activate",
+                "value": 0.5
+            },
+            {
+                "name": "mult cloak meter regen rate",
+                "class": "mult_cloak_meter_regen_rate",
+                "value": 1.5
+            },
+            {
+                "name": "mod_cloak_no_regen_from_items",
+                "class": "mod_cloak_no_regen_from_items",
+                "value": 1
+            },
+            {
+                "name": "kill eater score type",
+                "class": "kill_eater_score_type",
+                "value": 9
+            }
+        ]
+    },
+    {
+        "name": "The Cloak and Dagger",
+        "defindex": 60,
+        "item_class": "tf_weapon_invis",
+        "item_type_name": "#TF_Weapon_Watch",
+        "item_name": "#TF_Unique_Achievement_CloakWatch",
+        "proper_name": true,
+        "item_slot": "pda2",
+        "model_player": "models/weapons/v_models/v_watch_leather_spy.mdl",
+        "item_quality": 6,
+        "image_inventory": "backpack/weapons/c_models/c_leather_watch/parts/c_leather_watch",
+        "min_ilevel": 5,
+        "max_ilevel": 5,
+        "image_url": "http://media.steampowered.com/apps/440/icons/c_leather_watch.a982af29faf01d0173962c6496e9525f52d7d42c.png",
+        "image_url_large": "http://media.steampowered.com/apps/440/icons/c_leather_watch_large.ed4064cfc596e92a200a40481320f1d30d6807b0.png",
+        "craft_class": "weapon",
+        "craft_material_type": "weapon",
+        "capabilities": {
+            "nameable": true,
+            "can_gift_wrap": true,
+            "can_craft_mark": true,
+            "can_be_restored": true,
+            "strange_parts": true,
+            "can_card_upgrade": true,
+            "can_strangify": true,
+            "can_killstreakify": true,
+            "can_consume": true
+        },
+        "used_by_classes": [
+            "Spy"
+        ],
+        "attributes": [
+            {
+                "name": "kill eater score type",
+                "class": "kill_eater_score_type",
+                "value": 58
+            },
+            {
+                "name": "set cloak is movement based",
+                "class": "set_weapon_mode",
+                "value": 2
+            },
+            {
+                "name": "mult cloak meter regen rate",
+                "class": "mult_cloak_meter_regen_rate",
+                "value": 2
+            },
+            {
+                "name": "NoCloakWhenCloaked",
+                "class": "NoCloakWhenCloaked",
+                "value": 1
+            },
+            {
+                "name": "ReducedCloakFromAmmo",
+                "class": "ReducedCloakFromAmmo",
+                "value": 0.6499999761581421
+            }
+        ]
+    },
+    {
+        "name": "Invis Watch",
+        "defindex": 212,
+        "item_class": "tf_weapon_invis",
+        "item_type_name": "#TF_Weapon_Watch",
+        "item_name": "#TF_Weapon_Watch",
+        "item_description": "#TF_Weapon_Watch_desc",
+        "proper_name": false,
+        "item_slot": "pda2",
+        "model_player": "models/weapons/v_models/v_watch_spy.mdl",
+        "item_quality": 6,
+        "image_inventory": "backpack/weapons/c_models/c_spy_watch/parts/c_spy_watch",
+        "min_ilevel": 1,
+        "max_ilevel": 1,
+        "image_url": "http://media.steampowered.com/apps/440/icons/c_spy_watch.bce181d4e32e773e89dd2a424b377a8fc2de9e6c.png",
+        "image_url_large": "http://media.steampowered.com/apps/440/icons/c_spy_watch_large.162b1377564cac5b11bc5d32d15f2afa4bb4a389.png",
+        "craft_class": "",
+        "craft_material_type": "weapon",
+        "capabilities": {
+            "nameable": true,
+            "can_gift_wrap": true,
+            "can_craft_mark": true,
+            "can_be_restored": true,
+            "strange_parts": true,
+            "can_card_upgrade": true,
+            "can_strangify": true,
+            "can_killstreakify": true,
+            "can_consume": true
+        },
+        "used_by_classes": [
+            "Spy"
+        ],
+        "attributes": [
+            {
+                "name": "kill eater score type",
+                "class": "kill_eater_score_type",
+                "value": 58
+            }
+        ]
+    },
+    {
+        "name": "Enthusiast's Timepiece",
+        "defindex": 297,
+        "item_class": "tf_weapon_invis",
+        "item_type_name": "#TF_Weapon_Watch",
+        "item_name": "#TF_TTG_Watch",
+        "item_description": "#TF_Weapon_Watch_desc",
+        "proper_name": true,
+        "item_slot": "pda2",
+        "model_player": "models/weapons/v_models/v_ttg_watch_spy.mdl",
+        "item_quality": 6,
+        "image_inventory": "backpack/weapons/c_models/c_ttg_watch/c_ttg_watch",
+        "min_ilevel": 5,
+        "max_ilevel": 5,
+        "image_url": "http://media.steampowered.com/apps/440/icons/c_ttg_watch.76004edf544398c5dc7aeab53b65523547091b7a.png",
+        "image_url_large": "http://media.steampowered.com/apps/440/icons/c_ttg_watch_large.fd82aaf51f2cceba0239380a31664e17953bc483.png",
+        "craft_class": "",
+        "craft_material_type": "",
+        "capabilities": {
+            "nameable": true,
+            "can_gift_wrap": true,
+            "can_craft_mark": true,
+            "can_be_restored": true,
+            "strange_parts": true,
+            "can_card_upgrade": true,
+            "can_strangify": true,
+            "can_killstreakify": true,
+            "can_consume": true
+        },
+        "used_by_classes": [
+            "Spy"
+        ],
+        "attributes": [
+            {
+                "name": "kill eater score type",
+                "class": "kill_eater_score_type",
+                "value": 58
+            },
+            {
+                "name": "cannot trade",
+                "class": "cannot_trade",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "The Quackenbirdt",
+        "defindex": 947,
+        "item_class": "tf_weapon_invis",
+        "item_type_name": "#TF_Weapon_Watch",
+        "item_name": "#TF_HM_Watch",
+        "item_description": "#TF_HM_Watch_Desc",
+        "proper_name": true,
+        "item_slot": "pda2",
+        "model_player": "models/workshop_partner/weapons/v_models/v_hm_watch/v_hm_watch.mdl",
+        "item_quality": 6,
+        "image_inventory": "backpack/workshop_partner/weapons/v_models/v_hm_watch/v_hm_watch",
+        "min_ilevel": 1,
+        "max_ilevel": 100,
+        "image_url": "http://media.steampowered.com/apps/440/icons/v_hm_watch.4a5c72ce31c3b61c8b57d95b74e27087bd1562c9.png",
+        "image_url_large": "http://media.steampowered.com/apps/440/icons/v_hm_watch_large.b5bf2c07fb2882ca2ef739af07e8ce95c3a3e031.png",
+        "craft_class": "weapon",
+        "craft_material_type": "weapon",
+        "capabilities": {
+            "nameable": true,
+            "can_gift_wrap": true,
+            "can_craft_count": true,
+            "can_craft_mark": true,
+            "can_be_restored": true,
+            "strange_parts": true,
+            "can_card_upgrade": true,
+            "can_strangify": true,
+            "can_killstreakify": true,
+            "can_consume": true
+        },
+        "used_by_classes": [
+            "Spy"
+        ],
+        "attributes": [
+            {
+                "name": "kill eater score type",
+                "class": "kill_eater_score_type",
+                "value": 58
+            }
+        ]
+    }
+]

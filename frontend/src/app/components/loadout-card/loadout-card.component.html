@@ -1,0 +1,16 @@
+
+<div class="card">
+    <h2 class="text-center orange-shift-6 merc-name">{{ loadout().name }}</h2>
+    <div class="container">
+        <div class="weapon-display">
+            @for (slot of slots; track $index) {
+                <app-weapon-card [weapon]="loadout()[slot]" [scale]="0.75"></app-weapon-card>
+            }
+        </div>
+        <img [src]="getMercFullImg(loadout().merc)" alt="">
+    </div>
+    <div class="box">
+        <p class="title">Playstyle</p>
+        <p class="desc text-secondary">{{ loadout().playstyle }}</p>
+    </div>
+</div>

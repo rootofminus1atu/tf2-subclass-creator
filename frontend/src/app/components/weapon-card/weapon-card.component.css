@@ -1,0 +1,31 @@
+
+.weapon-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: var(--tf2-brown0);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 0.75rem;
+    border: 2px solid var(--tf2-beige);
+    overflow: hidden;
+}
+
+.editable {
+    border-color: var(--tf2-yellow);
+}
+  
+.weapon-name {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    color: var(--tf2-yellow);
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.active {
+    background-color: var(--tf2-brown2);
+}

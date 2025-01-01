@@ -1,0 +1,28 @@
+.title {
+    margin-top: 0;
+}
+.desc {
+    margin-bottom: 0;
+}
+
+
+.weapon-display {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+}
+
+img {
+    max-height: 20rem;
+}
+
+.merc-name {
+    font-size: 2rem;
+}

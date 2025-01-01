@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Pick a {{ data.slot }} weapon</h2>
+<mat-dialog-content class="mat-typography">
+
+  <div class="weapon-display-container">
+
+    @if (displayedWeapons$ | async; as weapons) {
+      @if (weapons.isOk()) {
+        <div class="weapon-display">
+          @for (weapon of weapons.value; track $index) {
+            <div class="weapon-space">
+              <app-weapon-card [weapon]="weapon" [mat-dialog-close]="weapon"></app-weapon-card>
+            </div>
+          }
+        </div>
+      } @else { 
+        <p class="full-w text-center text-secondary">error while loading weapons</p>
+      }
+    } @else {
+      <p class="full-w text-center text-secondary">loading...</p>
+    }
+  </div>
+
+  
+</mat-dialog-content>
+<mat-dialog-actions align="start">
+  <button mat-flat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

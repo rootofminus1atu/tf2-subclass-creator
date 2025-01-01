@@ -1,0 +1,70 @@
+<div class="creator-container">
+    <form class="the-form" [formGroup]="loadoutForm" (ngSubmit)="onSubmit()">
+        
+        <div class="merc-select full-w center">
+            <mat-form-field class="merc-form-field">
+                <mat-label for="merc-select">Merc</mat-label>
+                <mat-select name="merc-select" id="merc-select" formControlName="merc" (selectionChange)="onMercChange($event)">
+                    @for (merc of mercOptions; track $index) {
+                        <mat-option [value]="merc">{{ merc }}</mat-option>
+                    }
+                </mat-select>
+                @if (merc.value === null) {
+                    <mat-hint class="hint">Select a Merc first</mat-hint>
+                } @else {
+                    <mat-hint class="hint">Now click on one of the weapon slots</mat-hint>
+                }
+            </mat-form-field>    
+        </div>
+        
+        <div class="slot-select">
+            @for (slot of slotOptions; track $index) {
+                <div class="card-container">
+                    <div class="overlay" (click)="slotClick(slot)">
+                        <app-weapon-card 
+                            [weapon]="merc.value ? getSelectedWeapon(merc.value, slot) : null" 
+                            [fallbackText]="slot"
+                            [scale]="1.25"
+                            [editable]="true">
+                        </app-weapon-card>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="name-space full-w center">
+            <mat-form-field class="name-form-field">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="name your loadout...">
+                @if (name.hasError('required')) {
+                    <mat-error class="error">Name is required</mat-error>
+                } @else if (name.hasError('minlength')) {
+                    <mat-error class="error">Name must be at least 3 chars long</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="playstyle-space full-w center">
+            <mat-form-field class="playstyle-form-field">
+                <mat-label>Playstyle</mat-label>
+                <textarea matInput cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize" formControlName="playstyle" placeholder="describe the playstyle..."></textarea>
+                @if (playstyle.hasError('required')) {
+                    <mat-error class="error">Playstyle is required</mat-error>
+                } @else if (playstyle.hasError('minlength')) {
+                    <mat-error class="error">Playstyle must be at least 3 chars long</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div (click)="popupIfNecessary()" class="overlay">
+            <button type="submit" mat-flat-button [disabled]="loadoutForm.invalid">
+                <mat-icon>send</mat-icon>
+                Submit
+            </button>
+        </div>
+        
+    </form>
+</div>
+
+

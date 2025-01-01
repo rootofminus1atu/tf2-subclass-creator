@@ -1,0 +1,33 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+  
+.nav-container {
+    background-color: var(--tf2-brown2);
+}
+  
+.content {
+    background-image: url('../../public/assets/images/upward.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 1;
+    padding: 1rem;
+}
+  
+footer {
+    background-color: var(--tf2-brown2);
+    padding: 1rem;
+}
+
+footer {
+    font-size: x-large;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}

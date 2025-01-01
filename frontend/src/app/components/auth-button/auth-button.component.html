@@ -1,0 +1,8 @@
+@if (auth.isAuthenticated$ | async) {
+    <div (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+        Log&nbsp;out
+    </div>
+} @else { 
+    <div (click)="auth.loginWithRedirect()">Log&nbsp;in</div>
+}
+

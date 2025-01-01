@@ -1,0 +1,29 @@
+@endpoint = http://localhost:3000/api/v1/weapons
+
+
+# @name getAllWeapons
+GET {{endpoint}} HTTP/1.1
+Content-Type: application/json
+###
+
+# @name getWeaponById
+GET {{endpoint}}/35 HTTP/1.1
+Content-Type: application/json
+###
+
+# @name getWeaponsWithFilters
+GET {{endpoint}}?merc=Pyro&slot=secondary HTTP/1.1
+Content-Type: application/json
+###
+# @name getWeaponsWithFilters2
+GET {{endpoint}}?merc=Pyro HTTP/1.1
+Content-Type: application/json
+###
+# @name getWeaponsWithFilters3
+GET {{endpoint}}?slot=secondary HTTP/1.1
+Content-Type: application/json
+###
+# @name getWeaponsWithFilters4
+GET {{endpoint}}?slot=melee&merc=Engineer HTTP/1.1
+Content-Type: application/json
+###

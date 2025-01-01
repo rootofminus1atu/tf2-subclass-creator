@@ -1,0 +1,78 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: var(--tf2-white);
+    background-color: var(--tf2-brown2);
+}
+  
+.navbar-brand {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.navbar-brand a {
+    color: var(--tf2-white);
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+  
+.navbar-toggler {
+    color: var(--tf2-white);
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+  
+.navbar-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+  
+.navbar-item {
+    color: var(--tf2-white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-item.active {
+    color: var(--tf2-yellow);
+}
+  
+.navbar-item:hover {
+    background-color: var(--tf2-redish);
+}
+  
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+  
+    .navbar-toggler {
+       display: block;
+    }
+  
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+  
+    .navbar-menu.active {
+       display: flex;
+       padding: 0.5rem 0;
+    }
+  
+    .navbar-item {
+        text-align: left;
+        padding: 1rem;
+    }
+}
+  

@@ -1,0 +1,14 @@
+<p>loadout-details works!</p>
+
+@if (loadout$ | async; as loadout) {
+    @if (loadout.isOk()) {
+        <div>
+            <h1>{{ loadout.value.name }}</h1>
+            <pre>{{ loadout | json }}</pre>
+        </div>
+    } @else {
+        <p class="text-center text-secondary">Error while loading loadout</p>
+    }
+} @else {
+    <p class="text-center text-secondary">Loading...</p>
+}

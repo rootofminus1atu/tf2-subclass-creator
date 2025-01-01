@@ -1,0 +1,84 @@
+@endpoint = http://localhost:3000/api/v1/loadouts
+
+###
+# @name postALodout
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Pyro",
+    "primary": 208,
+    "secondary": 199,
+    "melee": 813,
+    "name": "pyroshark",
+    "playstyle": "swim and use the neon anihilator for crits"
+}
+###
+# @name postInvalidLoadoutBadMerc
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Merasmus",
+    "primary": 208,
+    "secondary": 199,
+    "melee": 813,
+    "name": "merasmus",
+    "playstyle": "swim and use the neon anihilator for crits"
+}
+###
+# @name postInvalidLoadoutBadPrimaryWeapon
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Pyro",
+    "primary": 813,
+    "secondary": 199,
+    "melee": 813,
+    "name": "pyroshark",
+    "playstyle": "swim and use the neon anihilator for crits"
+}
+###
+# @name postInvalidLoadoutMissingWeapon
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Pyro",
+    "secondary": 199,
+    "melee": 813,
+    "name": "pyroshark",
+    "playstyle": "swim and use the neon anihilator for crits"
+}
+###
+# @name postInvalidLoadoutNameTooShort
+POST {{endpoint}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "merc": "Pyro",
+    "primary": 208,
+    "secondary": 199,
+    "melee": 813,
+    "name": "a",
+    "playstyle": "swim and use the neon anihilator for crits"
+}
+###
+
+
+# @name getAllLoadouts
+GET {{endpoint}}?sort=desc HTTP/1.1
+Content-Type: application/json
+
+###
+
+# @name getLoadoutById
+GET {{endpoint}}/6712aecfc134e6e450eb9c73 HTTP/1.1
+Content-Type: application/json
+
+
+
+
+
+
