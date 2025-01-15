@@ -1,4 +1,4 @@
-const API_URI = 'https://servicenexus.shuttleapp.rs/tf2sc'
+const API_URI = 'https://servicenexus-hhq1.shuttle.app/tf2sc'
 
 export const environment = {
     production: true,

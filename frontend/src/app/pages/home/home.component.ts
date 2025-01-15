@@ -13,4 +13,8 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
+  ngOnInit() {
+    // silly way but well guess it'd work? maybe?
+    console.log('new version 15/01/2025')
+  }
 }
