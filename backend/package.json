@@ -22,14 +22,14 @@
     "express-oauth2-jwt-bearer": "^1.6.0",
     "joi": "^17.13.3",
     "mongodb": "^6.9.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "axios": "^1.7.7"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.5",
-    "axios": "^1.7.7",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"

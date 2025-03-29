@@ -1,5 +1,7 @@
 import { auth } from "express-oauth2-jwt-bearer/dist";
 import { Loadout } from "./models/loadout";
+import { Request, Response, NextFunction } from "express";
+
 
 type Role = "admin" | "moderator" | "user"
 const DEFAULT_ROLE = 'user';
@@ -62,3 +64,10 @@ export const jwtCheck = auth({
     issuerBaseURL: 'https://dev-fg28cspzvpoubaeb.us.auth0.com/',
     tokenSigningAlg: 'RS256'
 });
+
+export const optionalAuth = (req: Request, res: Response, next: NextFunction) => {
+    jwtCheck(req, res, (err) => {
+        // just a hack to extract the user id without it erroring out
+        next();
+    });
+};

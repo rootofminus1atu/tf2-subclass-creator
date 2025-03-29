@@ -2,6 +2,7 @@ import express, {Application, NextFunction, Request, Response, Router} from "exp
 import morgan from "morgan"
 import weaponsRouter from './routes/weapons'
 import loadoutsRouter from './routes/loadouts'
+import usersRouter from './routes/users'
 import { connectToDb } from "./database"
 import cors from 'cors'
 import dotenv from "dotenv"
@@ -27,6 +28,7 @@ app.get("/ping", jwtCheck, async (req : Request, res: Response) => {
 const apiRouter = Router()
     .use('/weapons', weaponsRouter)
     .use('/loadouts', loadoutsRouter)
+    .use('/users', usersRouter)
 
 app.use('/api/v1', apiRouter)
 
