@@ -19,9 +19,7 @@ app.use(morgan("tiny"))
 app.use(express.json())
 app.use(cors())
 
-app.get("/ping", jwtCheck, async (req : Request, res: Response) => {
-    const userId = req.auth?.payload.sub!
-    console.log(userId)
+app.get("/ping", async (req : Request, res: Response) => {
     res.send({ message: "hi" })
 })
 
