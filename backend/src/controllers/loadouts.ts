@@ -187,7 +187,7 @@ export const deleteLoadout = async (req: Request, res: Response) => {
         if (!userId) {
             throw new AppError(401, 'Unauthorized');
         }
-        const roles = req.auth?.payload['https://tf2scapi/roles'] as string[] || []
+        const roles = req.auth?.payload['https://tf2sc/roles'] as string[] || []
 
         // if (!hasPermission({ id: userId }, 'loadouts', 'update', loadoutToDelete)) {
         //     throw new AppError(403, 'Forbidden');

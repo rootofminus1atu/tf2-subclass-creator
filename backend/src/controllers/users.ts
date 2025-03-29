@@ -19,7 +19,7 @@ export const getUsers = async (req: Request, res: Response) => {
     try {
         // Check if user has admin role
         console.log(req.auth?.payload)
-        const roles = req.auth?.payload['https://tf2scapi/roles'] as string[] || []
+        const roles = req.auth?.payload['https://tf2sc/roles'] as string[] || []
         console.log('roles:', roles)
         if (!roles.includes('admin')) {
             throw new AppError(403, 'Admin access required')
