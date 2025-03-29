@@ -1,0 +1,24 @@
+GET https://p7w81i8dr1.execute-api.eu-west-1.amazonaws.com/v1/api/fav HTTP/1.1
+Authorization: my-secret-api-key
+
+###
+
+@baseUrl = https://dev-fg28cspzvpoubaeb.us.auth0.com
+
+###
+# Get Management API Token
+# @name getToken
+POST {{baseUrl}}/oauth/token
+Content-Type: application/json
+
+{
+    "client_id": "%CLIENT_ID%",
+    "client_secret": "%CLIENT_SECRET%",
+    "audience": "https://dev-fg28cspzvpoubaeb.us.auth0.com/api/v2/",
+    "grant_type": "client_credentials"
+}
+
+###
+# Get Users List
+GET {{baseUrl}}/api/v2/users
+Authorization: Bearer {{getToken.response.body.access_token}}

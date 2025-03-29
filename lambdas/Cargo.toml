@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "shared",
+    "add_fav",
+    "tf2sc_auth"
+]
+
+resolver = "2"
