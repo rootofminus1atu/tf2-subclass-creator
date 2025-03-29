@@ -1,10 +1,10 @@
 import { Router } from 'express'
 import { createLoadout, getLoadouts, getLoadoutById, updateLoadout, deleteLoadout } from '../controllers/loadouts'
-import { jwtCheck } from '../accessControl'
+import { jwtCheck, optionalAuth } from '../accessControl'
 
 const router = Router()
-    .get('/', getLoadouts)
-    .get('/:id', getLoadoutById)
+    .get('/', optionalAuth, getLoadouts)
+    .get('/:id', optionalAuth, getLoadoutById)
     .post('/', jwtCheck, createLoadout)
     .put('/:id', jwtCheck, updateLoadout)
     .delete('/:id', jwtCheck, deleteLoadout)

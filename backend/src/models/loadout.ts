@@ -14,6 +14,9 @@ export interface Loadout {
     playstyle: string
     createdAt?: Date
     updatedAt?: Date
+
+    favorites?: string[]
+    isFavorited?: boolean
 }
 
 export interface FullLoadout extends Omit<Loadout, keyof typeof ItemSlot> {

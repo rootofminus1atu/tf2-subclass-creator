@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { getLoadoutsCollection } from '../database'
 import { ObjectId } from 'mongodb'
-import { Loadout, validateLoadout, validateLoadoutForUpdate } from '../models/loadout'
+import { FullLoadout, Loadout, validateLoadout, validateLoadoutForUpdate } from '../models/loadout'
 import { AppError, handleErrors } from '../errors'
 
 import { hasPermission } from '../accessControl'
@@ -10,6 +10,8 @@ import { hasPermission } from '../accessControl'
 // TODO: add searching/sorting in the future
 export const getLoadouts = async (req: Request, res: Response) => {
     try {
+
+
         const loadoutsCollection = getLoadoutsCollection()
 
         const defaultSortOrder = -1
@@ -21,12 +23,27 @@ export const getLoadouts = async (req: Request, res: Response) => {
         const sortByStr = req.query.sortBy
         const sortBy = sortByStr === 'updated' ? 'updatedAt' : sortByStr === 'created' ? 'createdAt' : defaultSortField
 
+        const userId = req.auth?.payload.sub
+
         const loadouts = await loadoutsCollection.aggregate([
             { $sort: { [sortBy]: sortOrder }},
-            ...loadoutPipeline,
-        ]).toArray()
+            ...loadoutPipeline
+        ]).toArray() as FullLoadout[]  // glory to as
 
-        res.json(loadouts)
+        const processedLoadouts = loadouts.map(l => {
+            const { favorites, ...loadoutWithoutFavorites } = l
+            
+            console.log(favorites, userId)
+
+            return {
+                ...loadoutWithoutFavorites,
+                ...(userId && { isFavorited: favorites?.includes(userId) || false })
+            }
+        })
+
+        // console.log(processedLoadouts)
+
+        res.json(processedLoadouts)
     } catch (error) {
         handleErrors(error as Error, res)
         // res.status(500).json({ error: `Failed to get loadouts: ${error}` })
@@ -43,6 +60,8 @@ export const getLoadoutById = async (req: Request, res: Response) => {
         const loadoutsCollection = getLoadoutsCollection()
         const loadoutId = new ObjectId(loadoutIdStr)
 
+        const userId = req.auth?.payload.sub
+
         const pipeline = [
             { $match: { _id: loadoutId } },
             ...loadoutPipeline
@@ -54,7 +73,13 @@ export const getLoadoutById = async (req: Request, res: Response) => {
             throw new AppError(404, 'Loadout not found')
         }
 
-        res.json(loadout)
+        const { favorites, ...loadoutWithoutFavorites } = loadout
+        const processedLoadout = {
+            ...loadoutWithoutFavorites,
+            ...(userId && { isFavorited: favorites?.includes(userId) || false })
+        }
+
+        res.json(processedLoadout)
     } catch (error) {
         handleErrors(error as Error, res)
     }
@@ -80,6 +105,7 @@ export const createLoadout = async (req: Request, res: Response) => {
         loadout.userId = userId
         okLoadout.createdAt = new Date()
         okLoadout.updatedAt = new Date()
+        okLoadout.favorites = []
 
         const insertionResult = await loadoutsCollection.insertOne(okLoadout)
 
@@ -158,12 +184,18 @@ export const deleteLoadout = async (req: Request, res: Response) => {
 
         
         const userId = req.auth?.payload.sub
-        console.log('THE USERID', userId, 'H')
         if (!userId) {
             throw new AppError(401, 'Unauthorized');
         }
+        const roles = req.auth?.payload['https://tf2scapi/roles'] as string[] || []
 
-        if (!hasPermission({ id: userId }, 'loadouts', 'update', loadoutToDelete)) {
+        // if (!hasPermission({ id: userId }, 'loadouts', 'update', loadoutToDelete)) {
+        //     throw new AppError(403, 'Forbidden');
+        // }
+        const isOwner = loadoutToDelete.userId === userId
+        const isAdmin = roles.includes('admin')
+        
+        if (!isOwner && !isAdmin) {
             throw new AppError(403, 'Forbidden');
         }
 
@@ -178,6 +210,7 @@ export const deleteLoadout = async (req: Request, res: Response) => {
         handleErrors(error as Error, res)
     }
 }
+
 
 const loadoutPipeline = [
     {
@@ -229,6 +262,9 @@ const loadoutPipeline = [
             name: 1,
             playstyle: 1,
             userId: 1,
+            favorites: 1,
+            createdAt: 1,
+            updatedAt: 1,
             primary: '$primaryWeapon',
             secondary: '$secondaryWeapon',
             melee: '$meleeWeapon'
