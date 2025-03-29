@@ -2,18 +2,26 @@
 
 <div class="gallery-display">
     @if (displayedLoadouts$ | async; as loadouts) {
-        @if (loadouts.isOk()) {
+        @if(!errorMessage()) {
 
             @if (auth.isAuthenticated$ | async) {
                 <div class="box full-w">
                     <p class="title">Filters</p>
-                    <mat-checkbox class="example-margin text-secondary" (change)="onFilterChange($event)">Your loadouts</mat-checkbox>
+                    <mat-checkbox class="example-margin text-secondary" (change)="onFilterChange($event)">
+                        Your loadouts
+                    </mat-checkbox>
+                    <mat-checkbox class="example-margin text-secondary" (change)="onFavoriteFilterChange($event)">
+                        Favorited
+                    </mat-checkbox>
                 </div>
             }
 
-            @for (loadout of loadouts.value; track $index) {
+            @for (loadout of loadouts; track $index) {
                 <div [id]="loadout._id" class="space-for-card">
-                    <app-loadout-card [loadout]="loadout"></app-loadout-card>
+                    <app-loadout-card 
+                        [loadout]="loadout"
+                        (favoriteToggled)="toggleFavorite($event)">
+                    </app-loadout-card>
 
                     @if (auth.user$ | async; as user) {
                         @if (user.sub === loadout.userId) {

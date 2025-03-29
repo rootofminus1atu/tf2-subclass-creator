@@ -16,6 +16,7 @@ export class AuthButtonComponent {
   ngOnInit() {
     this.auth.isAuthenticated$.subscribe(isAuthenticated => {
       console.log('isAuthenticated:', isAuthenticated);
+      this.auth.user$.subscribe(user => console.log(user))
     })
   }
 }

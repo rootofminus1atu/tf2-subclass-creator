@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LoadoutService } from '../../services/loadout.service';
 import { AsyncPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -23,24 +23,67 @@ export class GalleryComponent {
   router = inject(Router)
   auth = inject(AuthService)
   
-  private refreshTrigger = new BehaviorSubject<void>(undefined)
+  // private refreshTrigger = new BehaviorSubject<void>(undefined)
   private yourLoadoutsCheckbox = new BehaviorSubject<boolean>(false)
+  private favoritedCheckbox = new BehaviorSubject<boolean>(false)
+  private localLoadouts = new BehaviorSubject<FullLoadout[]>([])
+  errorMessage = signal<string | null>(null)
 
-  loadouts$ = this.refreshTrigger.pipe(
-    switchMap(() => this.loadoutService.getLoadouts()),
-    startWith(null)
-  )
+  // loadouts$ = this.refreshTrigger.pipe(
+  //   switchMap(() => this.loadoutService.getLoadouts()),
+  //   startWith(null)
+  // )
+  ngOnInit() {
+    this.loadoutService.getLoadouts().subscribe(result => {
+      result.match(
+        loadouts => {
+          this.localLoadouts.next(loadouts)
+          this.errorMessage.set(null)
+        },
+        error => {
+          console.error('Error fetching loadouts:', error)
+          this.errorMessage.set("Failed to fetch loadouts.")
+        }
+      )
+    })
+  }
 
-  displayedLoadouts$ = combineLatest([this.loadouts$, this.yourLoadoutsCheckbox, this.auth.user$]).pipe(
-    map(([loadoutsRes, checked, user]) => loadoutsRes?.map(loadouts => 
-      !checked || !user 
-        ? loadouts
-        : loadouts.filter(loadout => loadout.userId === user.sub)
-    ))
+  // displayedLoadouts$ = combineLatest([this.loadouts$, this.yourLoadoutsCheckbox, this.auth.user$]).pipe(
+  //   map(([loadoutsRes, checked, user]) => loadoutsRes?.map(loadouts => 
+  //     !checked || !user 
+  //       ? loadouts
+  //       : loadouts.filter(loadout => loadout.userId === user.sub)
+  //   ))
+  // )
+  displayedLoadouts$ = combineLatest([
+    this.localLoadouts.asObservable(),
+    this.yourLoadoutsCheckbox,
+    this.favoritedCheckbox,
+    this.auth.user$
+  ]).pipe(
+    map(([loadouts, yourLoadoutsChecked, favoritedChecked, user]) => 
+      loadouts.filter(l => 
+        (!yourLoadoutsChecked || l.userId === user?.sub) &&
+        (!favoritedChecked || l.isFavorited)
+      )
+    )
   )
 
   onFilterChange(event: MatCheckboxChange) {
     this.yourLoadoutsCheckbox.next(event.checked)
+  }
+
+  onFavoriteFilterChange(event: MatCheckboxChange) {
+    this.favoritedCheckbox.next(event.checked);
+  }
+
+  toggleFavorite(loadoutId: string) {
+    console.log('catched with ', loadoutId)
+    this.localLoadouts.next(
+      this.localLoadouts.value.map(l =>
+        l._id === loadoutId ? { ...l, isFavorited: !l.isFavorited } : l
+      )
+    );
   }
 
   goToDetails(loadout: FullLoadout) {
@@ -59,7 +102,10 @@ export class GalleryComponent {
         deletionRes.match(
           success => {
             console.log('loadout deleted', success)
-            this.refreshTrigger.next();
+            // this.refreshTrigger.next();
+            this.localLoadouts.next(
+              this.localLoadouts.value.filter(l => l._id !== id)
+            )
           },
           error => {
             console.error('Error deleting loadout:', error)

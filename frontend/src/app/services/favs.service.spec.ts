@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoadoutService } from './loadout.service';
+import { FavsService } from './favs.service';
 
-// describe('LoadoutService', () => {
-//   let service: LoadoutService;
+// describe('FavsService', () => {
+//   let service: FavsService;
 
 //   beforeEach(() => {
 //     TestBed.configureTestingModule({});
-//     service = TestBed.inject(LoadoutService);
+//     service = TestBed.inject(FavsService);
 //   });
 
 //   it('should be created', () => {

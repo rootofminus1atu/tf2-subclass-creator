@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateLoadoutComponent } from './create-loadout.component';
+import { AdminDashboardComponent } from './admin-dashboard.component';
 
-// describe('CreateLoadoutComponent', () => {
-//   let component: CreateLoadoutComponent;
-//   let fixture: ComponentFixture<CreateLoadoutComponent>;
+// describe('AdminDashboardComponent', () => {
+//   let component: AdminDashboardComponent;
+//   let fixture: ComponentFixture<AdminDashboardComponent>;
 
 //   beforeEach(async () => {
 //     await TestBed.configureTestingModule({
-//       imports: [CreateLoadoutComponent]
+//       imports: [AdminDashboardComponent]
 //     })
 //     .compileComponents();
 
-//     fixture = TestBed.createComponent(CreateLoadoutComponent);
+//     fixture = TestBed.createComponent(AdminDashboardComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

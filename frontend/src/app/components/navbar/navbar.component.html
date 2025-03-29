@@ -12,6 +12,10 @@
         <a class="navbar-item" (click)="collapseNavbar()">
             <app-auth-button></app-auth-button>
         </a>
+        @if (auth.user$ | async; as user) {
+            @if (user['https://tf2sc/roles']?.includes('admin')) {
+                <a class="navbar-item" routerLink="/admin" routerLinkActive="active" (click)="toggleNavbar()">Admin&nbsp;Dashboard</a>
+            }
+        }
     </div>
 </nav>
-  

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { FavsService } from '../../services/favs.service';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  favsService = inject(FavsService)
 
   ngOnInit() {
     // silly way but well guess it'd work? maybe?
-    console.log('new version 15/01/2025')
+    console.log('in dev 26/03/2025')
   }
 }

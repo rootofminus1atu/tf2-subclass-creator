@@ -26,3 +26,27 @@ img {
 .merc-name {
     font-size: 2rem;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.star {
+    color: gold;
+    cursor: pointer;
+    font-size: 3rem;
+    height: 3rem;
+    width: 3rem;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-0.7rem);
+}
+
+.toggling {
+    color: rgba(255, 217, 0, 0.452)
+}

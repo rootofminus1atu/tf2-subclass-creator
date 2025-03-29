@@ -37,6 +37,51 @@ export const appConfig: ApplicationConfig = {
           //   }
           // },
           {
+            uri: environment.routes.users,
+            httpMethod: 'GET',
+            tokenOptions: {
+              authorizationParams: {
+                audience: AUDIENCE
+              }
+            }
+          },
+          {
+            uri: environment.routes.favs,
+            httpMethod: 'POST',
+            tokenOptions: {
+              authorizationParams: {
+                audience: AUDIENCE
+              }
+            }
+          },
+          {
+            uri: `${environment.routes.favs}/*`,
+            httpMethod: 'POST',
+            tokenOptions: {
+              authorizationParams: {
+                audience: AUDIENCE
+              }
+            }
+          },
+          {
+            uri: environment.routes.loadouts,
+            httpMethod: 'GET',
+            tokenOptions: {
+              authorizationParams: {
+                audience: AUDIENCE
+              }
+            }
+          },
+          {
+            uri: `${environment.routes.loadouts}/*`,
+            httpMethod: 'GET',
+            tokenOptions: {
+              authorizationParams: {
+                audience: AUDIENCE
+              }
+            }
+          },
+          {
             uri: environment.routes.loadouts,
             httpMethod: 'POST',
             tokenOptions: {

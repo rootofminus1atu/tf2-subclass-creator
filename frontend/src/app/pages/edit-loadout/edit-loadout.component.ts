@@ -50,6 +50,7 @@ export class EditLoadoutComponent {
           this.loadoutService.setCachedLoadout({ 
             _id: this.id, 
             userId: this.userId,
+            isFavorited: false,  // we dont care about favorites state in caching
             ...loadout 
           })
           // toast poup saying that

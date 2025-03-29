@@ -55,3 +55,12 @@
     container-color: var(--tf2-brown0)
   ));
 }
+
+
+:root {
+  @include mat.table-overrides((
+    // background-color: orange,
+    header-headline-color: var(--tf2-white),
+    row-item-label-text-color: var(--tf2-white)
+  ));
+}

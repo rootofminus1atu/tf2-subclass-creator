@@ -5,11 +5,14 @@ import { CreateLoadoutComponent } from './pages/create-loadout/create-loadout.co
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { EditLoadoutComponent } from './pages/edit-loadout/edit-loadout.component';
 import { AuthGuard } from '@auth0/auth0-angular';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { adminGuard } from './misc/adminGuard';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'loadout-creator', component: CreateLoadoutComponent, canActivate: [AuthGuard] },
-    { path: 'gallery', component: GalleryComponent },
-    { path: 'gallery/:id/edit', component: EditLoadoutComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent, title: 'Home' },
+    { path: 'about', component: AboutComponent, title: 'About' },
+    { path: 'loadout-creator', component: CreateLoadoutComponent, canActivate: [AuthGuard], title: 'LoadoutCreator' },
+    { path: 'gallery', component: GalleryComponent, title: 'Gallery' },
+    { path: 'gallery/:id/edit', component: EditLoadoutComponent, canActivate: [AuthGuard], title: 'Edit' },
+    { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard, adminGuard], title: 'Admin' }
 ];

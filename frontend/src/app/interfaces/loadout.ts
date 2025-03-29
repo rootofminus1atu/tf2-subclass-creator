@@ -3,15 +3,18 @@ import { ItemSlot, Merc, Weapon } from "./weapon";
 export interface Loadout {
     _id: string,
     userId: string,
+    isFavorited: boolean,
     merc: Merc,
     primary: number,
     secondary: number,
     melee: number,
     name: string,
-    playstyle: string
+    playstyle: string,
+    createdAt?: string,
+    updatedAt?: string
 }
 
-type NonSettableFields = '_id' | 'userId'
+type NonSettableFields = '_id' | 'userId' | 'isFavorited'
 
 export interface LoadoutForCreate extends Omit<Loadout, NonSettableFields> {}
 
@@ -22,9 +25,11 @@ export function toLoadoutForUpdate(loadout: LoadoutForCreate) {
 export interface LoadoutForUpdate extends Partial<LoadoutForCreate> {}
 
 export interface FullLoadout extends Omit<Loadout, keyof typeof ItemSlot> {
-    primary: Weapon;
-    secondary: Weapon;
-    melee: Weapon;
+    primary: Weapon
+    secondary: Weapon
+    melee: Weapon
+    // createdAt: string
+    // updatedAt: string
 }
 
 export interface FullLoadoutForCreate extends Omit<FullLoadout, NonSettableFields> {}

@@ -1,6 +1,14 @@
 
 <div class="card">
-    <h2 class="text-center orange-shift-6 merc-name">{{ loadout().name }}</h2>
+    <div class="header">
+        <h2 class="text-center orange-shift-6 merc-name">{{ loadout().name }}</h2>
+        <mat-icon 
+            class="star" 
+            [class.toggling]="isToggling()"
+            (click)="toggleFavorite($event)">
+            {{ loadout().isFavorited ? 'star' : 'star_border' }}
+        </mat-icon>
+    </div>
     <div class="container">
         <div class="weapon-display">
             @for (slot of slots; track $index) {

@@ -1,0 +1,53 @@
+<h1 class="hero-text orange-shift-12 text-center">ADMIN DASHBOARD</h1>
+
+
+<div class="box">
+    <h2>Users and their loadouts</h2>
+    <p class="text-secondary">Within this dashboard you can check out what your current users are and what subclasses they have created.</p>
+</div>
+    
+
+<div class="boxes">
+    @if (users$ | async; as users) {
+        @if (users.isOk()) {
+            @for (user of users.value; track $index) {
+                <div class="box">
+                <h3>{{ user.email }}</h3>
+      
+                <table mat-table [dataSource]="user.loadouts" class="mat-elevation-z8">
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Loadout Name </th>
+                    <td mat-cell *matCellDef="let loadout"> {{ loadout.name }} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="weapons">
+                    <th mat-header-cell *matHeaderCellDef> Weapons </th>
+                    <td mat-cell *matCellDef="let loadout"> {{ loadout.primary.name }}, {{ loadout.secondary.name }}, {{ loadout.melee.name }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="last updated">
+                    <th mat-header-cell *matHeaderCellDef> Last Updated </th>
+                    <td mat-cell *matCellDef="let loadout"> {{ loadout.updatedAt | date }} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let loadout">
+                        <button mat-icon-button color="warn" (click)="deleteLoadout(loadout._id)">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let loadout; columns: displayedColumns;"></tr>
+                </table>
+                </div>
+            }
+        } @else {
+            <p class="text-center text-secondary text-dark">Error loading users</p>
+        }
+    } @else {
+        <p class="text-center text-secondary text-dark">Loading users...</p>
+    }
+</div>
